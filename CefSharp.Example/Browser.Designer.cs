@@ -47,10 +47,11 @@
             this.testConsoleMessagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testBindCLRObjectToJSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testTooltipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testPopupWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookmarksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cefSharpHomeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fireBugLiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.testPopupWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showDeveloperToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -175,7 +176,8 @@
             this.testConsoleMessagesToolStripMenuItem,
             this.testBindCLRObjectToJSToolStripMenuItem,
             this.testTooltipsToolStripMenuItem,
-            this.testPopupWindowToolStripMenuItem});
+            this.testPopupWindowToolStripMenuItem,
+            this.showDeveloperToolsToolStripMenuItem});
             this.testsToolStripMenuItem.Name = "testsToolStripMenuItem";
             this.testsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.testsToolStripMenuItem.Text = "Tests";
@@ -229,6 +231,13 @@
             this.testTooltipsToolStripMenuItem.Text = "Test Tooltips";
             this.testTooltipsToolStripMenuItem.Click += new System.EventHandler(this.testTooltipsToolStripMenuItem_Click);
             // 
+            // testPopupWindowToolStripMenuItem
+            // 
+            this.testPopupWindowToolStripMenuItem.Name = "testPopupWindowToolStripMenuItem";
+            this.testPopupWindowToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.testPopupWindowToolStripMenuItem.Text = "Test Popup Window";
+            this.testPopupWindowToolStripMenuItem.Click += new System.EventHandler(this.testPopupWindowToolStripMenuItem_Click);
+            // 
             // bookmarksToolStripMenuItem
             // 
             this.bookmarksToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -252,12 +261,12 @@
             this.fireBugLiteToolStripMenuItem.Text = "FireBug Lite";
             this.fireBugLiteToolStripMenuItem.Click += new System.EventHandler(this.fireBugLiteToolStripMenuItem_Click);
             // 
-            // testPopupWindowToolStripMenuItem
+            // showDeveloperToolsToolStripMenuItem
             // 
-            this.testPopupWindowToolStripMenuItem.Name = "testPopupWindowToolStripMenuItem";
-            this.testPopupWindowToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
-            this.testPopupWindowToolStripMenuItem.Text = "Test Popup Window";
-            this.testPopupWindowToolStripMenuItem.Click += new System.EventHandler(this.testPopupWindowToolStripMenuItem_Click);
+            this.showDeveloperToolsToolStripMenuItem.Name = "showDeveloperToolsToolStripMenuItem";
+            this.showDeveloperToolsToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.showDeveloperToolsToolStripMenuItem.Text = "Show Developer Tools";
+            this.showDeveloperToolsToolStripMenuItem.Click += new System.EventHandler(this.showDeveloperToolsToolStripMenuItem_Click);
             // 
             // Browser
             // 
@@ -307,6 +316,7 @@
         private System.Windows.Forms.ToolStripMenuItem fireBugLiteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testTooltipsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testPopupWindowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showDeveloperToolsToolStripMenuItem;
 
     }
 }

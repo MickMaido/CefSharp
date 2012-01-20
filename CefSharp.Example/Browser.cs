@@ -224,5 +224,10 @@ namespace CefSharp.Example
         {
             _browserControl.Load("test://test/PopupTest.html");
         }
+
+        private void showDeveloperToolsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _browserControl.ShowDevTools();
+        }
     }
 }
