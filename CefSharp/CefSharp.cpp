@@ -9,7 +9,7 @@
 #include "CefFormsWebBrowser.h"
 #include "CefWpfWebBrowser.h"
 
-namespace CefSharp 
+namespace CefSharp
 {
 
 }

@@ -123,13 +123,13 @@ namespace CefSharp
 
     void CefWpfWebBrowser::SetNavState(bool isLoading, bool canGoBack, bool canGoForward)
     {
-        if(isLoading != _isLoading) 
+        if(isLoading != _isLoading)
         {
             _isLoading = isLoading;
             PropertyChanged(this, gcnew PropertyChangedEventArgs(L"IsLoading"));
         }
 
-        if(canGoBack != _canGoBack) 
+        if(canGoBack != _canGoBack)
         {
             _canGoBack = canGoBack;
             PropertyChanged(this, gcnew PropertyChangedEventArgs(L"CanGoBack"));
@@ -282,7 +282,7 @@ namespace CefSharp
     IntPtr CefWpfWebBrowser::SourceHook(IntPtr hWnd, int message, IntPtr wParam, IntPtr lParam, bool% handled)
     {
         handled = false;
-        
+
         switch(message)
         {
             case WM_KEYDOWN:

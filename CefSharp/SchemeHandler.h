@@ -34,7 +34,7 @@ class SchemeHandlerWrapper : public CefSchemeHandler
 
 public:
 
-    SchemeHandlerWrapper(ISchemeHandler^ handler) : _handler(handler) 
+    SchemeHandlerWrapper(ISchemeHandler^ handler) : _handler(handler)
     {
         if(!_handler)
         {
@@ -54,9 +54,9 @@ public:
 class SchemeHandlerFactoryWrapper : public CefSchemeHandlerFactory
 {
     gcroot<ISchemeHandlerFactory^> _factory;
-   
+
 public:
-    SchemeHandlerFactoryWrapper(ISchemeHandlerFactory^ factory) 
+    SchemeHandlerFactoryWrapper(ISchemeHandlerFactory^ factory)
         : _factory(factory) {}
 
     virtual CefRefPtr<CefSchemeHandler> Create(CefRefPtr<CefBrowser> browser, const CefString& scheme_name, CefRefPtr<CefRequest> request);

@@ -11,7 +11,7 @@
 #include "IAfterResponse.h"
 #include "StreamAdapter.h"
 
-namespace CefSharp 
+namespace CefSharp
 {
     bool ClientAdapter::OnBeforePopup(CefRefPtr<CefBrowser> parentBrowser, const CefPopupFeatures& popupFeatures, CefWindowInfo& windowInfo, const CefString& url, CefRefPtr<CefClient>& client, CefBrowserSettings& settings)
     {
@@ -100,7 +100,7 @@ namespace CefSharp
         AutoLock lock_scope(this);
         if (frame->IsMain())
         {
-            _browserControl->SetNavState(false, browser->CanGoBack(), browser->CanGoForward());        
+            _browserControl->SetNavState(false, browser->CanGoBack(), browser->CanGoForward());
         }
 
         _browserControl->FrameLoadComplete(frame);
@@ -113,7 +113,7 @@ namespace CefSharp
         {
             CefRequestWrapper^ wrapper = gcnew CefRequestWrapper(request);
             RequestResponse^ requestResponse = gcnew RequestResponse(wrapper);
-            
+
             handler->HandleBeforeResourceLoad(_browserControl, requestResponse);
 
             if(requestResponse->Action == ResponseAction::Respond)
@@ -133,7 +133,7 @@ namespace CefSharp
             }
         }
 
-        return false; 
+        return false;
     }
 
     void ClientAdapter::OnResourceResponse(CefRefPtr<CefBrowser> browser, const CefString& url, CefRefPtr<CefResponse> response, CefRefPtr<CefContentFilter>& filter)

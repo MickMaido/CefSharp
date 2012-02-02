@@ -120,7 +120,7 @@ namespace CefSharp
         virtual void SetToolTip(String^ text);
         virtual void SetAddress(String^ address);
         virtual void SetNavState(bool isLoading, bool canGoBack, bool canGoForward);
-        
+
         virtual void AddFrame(CefRefPtr<CefFrame> frame);
         virtual void FrameLoadComplete(CefRefPtr<CefFrame> frame);
 
@@ -163,13 +163,13 @@ namespace CefSharp
         }
 
         property bool CanGoForward
-        { 
-            bool get() { return _canGoForward; } 
+        {
+            bool get() { return _canGoForward; }
         }
 
         property bool CanGoBack
-        { 
-            bool get() { return _canGoBack; } 
+        {
+            bool get() { return _canGoBack; }
         }
 
         property bool IsLoading
