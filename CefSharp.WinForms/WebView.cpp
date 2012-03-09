@@ -215,6 +215,11 @@ namespace WinForms
         ConsoleMessage(this, gcnew ConsoleMessageEventArgs(message, source, line));
     }
 
+	void WebView::OnKeyEvent(int type, int code, int modifiers, bool isSystemKey)
+    {
+		BrowserKeyEvent(this, gcnew BrowserKeyEventArgs(type, code, modifiers, isSystemKey));
+    }
+
     void WebView::OnFrameLoadStart()
     {
         _browserCore->OnFrameLoadStart();

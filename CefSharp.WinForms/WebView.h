@@ -28,6 +28,7 @@ namespace WinForms
         virtual void OnSizeChanged(EventArgs^ e) override;
         virtual void OnGotFocus(EventArgs^ e) override;
 
+
     public:
         virtual event PropertyChangedEventHandler^ PropertyChanged
         {
@@ -43,6 +44,8 @@ namespace WinForms
         }
 
         virtual event ConsoleMessageEventHandler^ ConsoleMessage;
+
+		virtual event KeyEventHandler^ BrowserKeyEvent;
 
         WebView()
         {
@@ -174,5 +177,6 @@ namespace WinForms
         virtual void OnFrameLoadEnd();
         virtual void OnTakeFocus(bool next);
         virtual void OnConsoleMessage(String^ message, String^ source, int line);
+		virtual void OnKeyEvent(int type, int code, int modifiers, bool isSystemKey);
     };
 }}
