@@ -75,6 +75,8 @@ namespace CefSharp
         // CefKeyboardHandler
         virtual DECL bool OnKeyEvent(CefRefPtr<CefBrowser> browser, KeyEventType type, int code, int modifiers, bool isSystemKey, bool isAfterJavaScript) OVERRIDE;
 
+
+
         IMPLEMENT_LOCKING(ClientAdapter);
         IMPLEMENT_REFCOUNTING(ClientAdapter);
     };

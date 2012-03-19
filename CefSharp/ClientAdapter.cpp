@@ -168,6 +168,13 @@ namespace CefSharp
         {
             BindingHandler::Bind(kvp->Key, kvp->Value, context->GetGlobal());
         }
+		
+		if (_browserControl->BoundObject != nullptr)
+        {
+			BindingHandler::Bind("BrowserJsObject", _browserControl->BoundObject, context->GetGlobal());
+		}
+		
+
     }
 
     bool ClientAdapter::OnBeforeMenu(CefRefPtr<CefBrowser> browser, const CefMenuInfo& menuInfo)

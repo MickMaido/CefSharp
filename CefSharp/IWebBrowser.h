@@ -31,6 +31,7 @@ namespace CefSharp
         property String^ Address;
         property String^ Title;
         property String^ TooltipText;
+		property Object^ BoundObject;
 
         property IBeforePopup^ BeforePopupHandler;
         property IBeforeResourceLoad^ BeforeResourceLoadHandler;

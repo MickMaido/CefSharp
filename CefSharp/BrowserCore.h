@@ -29,6 +29,7 @@ namespace CefSharp
         String^ _tooltip;
         String^ _address;
         String^ _title;
+		Object^ _boundObject;
 
         IBeforePopup^ _beforePopupHandler;
         IBeforeResourceLoad^ _beforeResourceLoadHandler;
@@ -119,6 +120,16 @@ namespace CefSharp
                     _title = title;
                     PropertyChanged(this, gcnew PropertyChangedEventArgs(L"Title"));
                 }
+            }
+        }
+
+		property Object^ BoundObject
+        {
+            Object^ get() { return _boundObject; }
+
+            void set(Object^ object)
+            {
+                _boundObject = object;
             }
         }
 

@@ -111,6 +111,12 @@ namespace WinForms
             void set(String^ title) { _browserCore->Title = title; }
         }
 
+        virtual property Object^ BoundObject
+        {
+            Object^ get() { return _browserCore->BoundObject; }
+            void set(Object^ object) { _browserCore->BoundObject = object; }
+        }
+
         virtual property String^ TooltipText
         {
             String^ get() { return _browserCore->TooltipText; }
