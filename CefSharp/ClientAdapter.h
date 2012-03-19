@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #pragma once
 
+#include "include/cef_client.h"
+
 namespace CefSharp
 {
     using namespace System;
@@ -29,22 +31,7 @@ namespace CefSharp
         ClientAdapter(IWebBrowser^ browserControl) : _browserControl(browserControl) {}
 
         HWND GetBrowserHwnd() { return _browserHwnd; }
-
-        CefRefPtr<CefBrowser> GetCefBrowser()
-        {
-            if (_cefBrowser == nullptr)
-            {
-                //TODO: make own exception type?
-                throw gcnew InvalidOperationException("CefBrowser is not initialized now.");
-            }
-
-            return _cefBrowser;
-        }
-
-        bool GetIsInitialized()
-        {
-            return _cefBrowser != nullptr;
-        }
+        CefRefPtr<CefBrowser> GetCefBrowser() { return _cefBrowser; }
 
         // CefClient
         virtual CefRefPtr<CefLifeSpanHandler> GetLifeSpanHandler() OVERRIDE { return this; }

@@ -21,6 +21,19 @@ namespace WinForms
         _scriptCore = new ScriptCore();
     }
 
+    bool WebView::TryGetCefBrowser(CefRefPtr<CefBrowser>& browser)
+    {
+        if (_browserCore->IsBrowserInitialized)
+        {
+            browser = _clientAdapter->GetCefBrowser();
+            return browser != nullptr;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     void WebView::OnHandleCreated(EventArgs^ e)
     {
         if (DesignMode == false) 
@@ -43,7 +56,9 @@ namespace WinForms
 
     void WebView::OnSizeChanged(EventArgs^ e)
     {
-        if (IsInitialized && !DesignMode)
+        CefRefPtr<CefBrowser> browser;
+        if (!DesignMode &&
+            TryGetCefBrowser(browser))
         {
             HWND hWnd = static_cast<HWND>(Handle.ToPointer());
             RECT rect;
@@ -58,9 +73,11 @@ namespace WinForms
 
     void WebView::OnGotFocus(EventArgs^ e)
     {
-        if (IsInitialized && !DesignMode)
+        CefRefPtr<CefBrowser> browser;
+        if (!DesignMode &&
+            TryGetCefBrowser(browser))
         {
-            _clientAdapter->GetCefBrowser()->SetFocus(true);
+            browser->SetFocus(true);
         }
     }
 
@@ -74,26 +91,46 @@ namespace WinForms
     {
         _browserCore->CheckBrowserInitialization();
         _browserCore->OnLoad();
-        _clientAdapter->GetCefBrowser()->GetMainFrame()->LoadURL(toNative(url));
+
+        CefRefPtr<CefBrowser> browser;
+        if (TryGetCefBrowser(browser))
+        {
+            browser->GetMainFrame()->LoadURL(toNative(url));
+        }
     }
 
     void WebView::Stop()
     {
         _browserCore->CheckBrowserInitialization();
-        _clientAdapter->GetCefBrowser()->StopLoad();
 
+        CefRefPtr<CefBrowser> browser;
+        if (TryGetCefBrowser(browser))
+        {
+            browser->StopLoad();
+        }
     }
 
     void WebView::Back()
     {
         _browserCore->CheckBrowserInitialization();
-        _clientAdapter->GetCefBrowser()->GoBack();
+
+
+        CefRefPtr<CefBrowser> browser;
+        if (TryGetCefBrowser(browser))
+        {
+            browser->GoBack();
+        }
     }
 
     void WebView::Forward()
     {
         _browserCore->CheckBrowserInitialization();
-        _clientAdapter->GetCefBrowser()->GoForward();
+
+        CefRefPtr<CefBrowser> browser;
+        if (TryGetCefBrowser(browser))
+        {
+            browser->GoForward();
+        }
     }
 
     void WebView::Reload()
@@ -104,90 +141,153 @@ namespace WinForms
     void WebView::Reload(bool ignoreCache)
     {
         _browserCore->CheckBrowserInitialization();
+
+        CefRefPtr<CefBrowser> browser;
+        if (!TryGetCefBrowser(browser))
+        {
+            return;
+        }
+
         if (ignoreCache)
         {
-            _clientAdapter->GetCefBrowser()->ReloadIgnoreCache();
+            browser->ReloadIgnoreCache();
         }
         else
         {
-            _clientAdapter->GetCefBrowser()->Reload();
+            browser->Reload();
         }
     }
 
     void WebView::ClearHistory()
     {
         _browserCore->CheckBrowserInitialization();
-        _clientAdapter->GetCefBrowser()->ClearHistory();
+
+        CefRefPtr<CefBrowser> browser;
+        if (TryGetCefBrowser(browser))
+        {
+            browser->ClearHistory();
+        }
     }
 
     void WebView::ShowDevTools()
     {
         _browserCore->CheckBrowserInitialization();
-        _clientAdapter->GetCefBrowser()->ShowDevTools();
+
+        CefRefPtr<CefBrowser> browser;
+        if (TryGetCefBrowser(browser))
+        {
+            browser->ShowDevTools();
+        }
     }
 
     void WebView::CloseDevTools()
     {
         _browserCore->CheckBrowserInitialization();
-        _clientAdapter->GetCefBrowser()->CloseDevTools();
+
+        CefRefPtr<CefBrowser> browser;
+        if (TryGetCefBrowser(browser))
+        {
+            browser->CloseDevTools();
+        }
     }
 
     void WebView::Undo()
     {
         _browserCore->CheckBrowserInitialization();
-        _clientAdapter->GetCefBrowser()->GetMainFrame()->Undo();
+
+        CefRefPtr<CefBrowser> browser;
+        if (TryGetCefBrowser(browser))
+        {
+            browser->GetMainFrame()->Undo();
+        }
     }
 
     void WebView::Redo()
     {
         _browserCore->CheckBrowserInitialization();
-        _clientAdapter->GetCefBrowser()->GetMainFrame()->Redo();
+
+        CefRefPtr<CefBrowser> browser;
+        if (TryGetCefBrowser(browser))
+        {
+            browser->GetMainFrame()->Redo();
+        }
     }
 
     void WebView::Cut()
     {
         _browserCore->CheckBrowserInitialization();
-        _clientAdapter->GetCefBrowser()->GetMainFrame()->Cut();
+
+        CefRefPtr<CefBrowser> browser;
+        if (TryGetCefBrowser(browser))
+        {
+            browser->GetMainFrame()->Cut();
+        }
     }
 
     void WebView::Copy()
     {
         _browserCore->CheckBrowserInitialization();
-        _clientAdapter->GetCefBrowser()->GetMainFrame()->Copy();
+
+        CefRefPtr<CefBrowser> browser;
+        if (TryGetCefBrowser(browser))
+        {
+            browser->GetMainFrame()->Copy();
+        }
     }
 
     void WebView::Paste()
     {
         _browserCore->CheckBrowserInitialization();
-        _clientAdapter->GetCefBrowser()->GetMainFrame()->Paste();
+
+        CefRefPtr<CefBrowser> browser;
+        if (TryGetCefBrowser(browser))
+        {
+            browser->GetMainFrame()->Paste();
+        }
     }
 
     void WebView::Delete()
     {
         _browserCore->CheckBrowserInitialization();
-        _clientAdapter->GetCefBrowser()->GetMainFrame()->Delete();
+
+        CefRefPtr<CefBrowser> browser;
+        if (TryGetCefBrowser(browser))
+        {
+            browser->GetMainFrame()->Delete();
+        }
     }
 
     void WebView::SelectAll()
     {
         _browserCore->CheckBrowserInitialization();
-        _clientAdapter->GetCefBrowser()->GetMainFrame()->SelectAll();
+
+        CefRefPtr<CefBrowser> browser;
+        if (TryGetCefBrowser(browser))
+        {
+            browser->GetMainFrame()->SelectAll();
+        }
     }
 
     void WebView::Print()
     {
         _browserCore->CheckBrowserInitialization();
-        _clientAdapter->GetCefBrowser()->GetMainFrame()->Print();
+
+        CefRefPtr<CefBrowser> browser;
+        if (TryGetCefBrowser(browser))
+        {
+            browser->GetMainFrame()->Print();
+        }
     }
 
     void WebView::ExecuteScript(String^ script)
     {
         _browserCore->CheckBrowserInitialization();
 
-        CefRefPtr<CefBrowser> browser = _clientAdapter->GetCefBrowser();
-        CefRefPtr<CefFrame> frame = browser->GetMainFrame();
-
-        _scriptCore->Execute(frame, toNative(script));
+        CefRefPtr<CefBrowser> browser;
+        if (TryGetCefBrowser(browser))
+        {
+            _scriptCore->Execute(browser, toNative(script));
+        }
     }
 
     Object^ WebView::EvaluateScript(String^ script)
@@ -199,10 +299,17 @@ namespace WinForms
     {
 	    _browserCore->CheckBrowserInitialization();
 
-        CefRefPtr<CefBrowser> browser = _clientAdapter->GetCefBrowser();
-        CefRefPtr<CefFrame> frame = browser->GetMainFrame();
-
-        return _scriptCore->Evaluate(frame, toNative(script), timeout.TotalMilliseconds);
+        CefRefPtr<CefBrowser> browser;
+        if (TryGetCefBrowser(browser))
+        {
+            return _scriptCore->Evaluate(browser, toNative(script),
+                timeout.TotalMilliseconds);
+        }
+        else
+        {
+            // XXX: exception
+            return nullptr;
+        }
     }
 
     void WebView::SetNavState(bool isLoading, bool canGoBack, bool canGoForward)
